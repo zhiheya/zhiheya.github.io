@@ -6,12 +6,12 @@ if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobi
     window && (() => {
         let e = {
             flakeCount: 50,    // 花瓣数量保持不变
-            minDist: 150,      // 互动影响距离不变
+            minDist: 50,      // 互动影响距离不变
             color: "255, 183, 197", // 改为樱花粉色
             size: 2.5,         // 增大基础尺寸
             speed: .5,         // 下落速度保持不变
             opacity: .8,       // 提高透明度
-            stepsize: .5       // 飘动幅度保持不变
+            stepsize: .4       // 飘动幅度保持不变
         };
         const t = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (e) {
             window.setTimeout(e, 1e3 / 60)
