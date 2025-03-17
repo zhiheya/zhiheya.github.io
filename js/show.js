@@ -5,8 +5,8 @@ if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobi
 
     window && (() => {
         let e = {
-            flakeCount: 50,    // 花瓣数量保持不变
-            minDist: 50,      // 互动影响距离不变
+            flakeCount: 35,    // 花瓣数量保持不变
+            minDist: 20,      // 互动影响距离不变
             color: "255, 183, 197", // 改为樱花粉色
             size: 2.5,         // 增大基础尺寸
             speed: .5,         // 下落速度保持不变

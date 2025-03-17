@@ -372,9 +372,39 @@ div#archive {
   bottom: -45px
 }
 
+#pagination.pagination-post {
+    background: rgb(0 0 0 / 23%);
+}
 
+.postImgHover img, #pagination .prev-post img, #pagination .next-post img, .relatedPosts > .relatedPosts-list > div img {
+opacity: 0.9;
+}
+.prev-cover entered loaded {
+width: 100%;
+  height: 100%;
+  object-fit: contain; /* 保持比例，完整显示图片 */
+}
+.relatedPosts > .relatedPosts-list .content {
+top: 65%;
+}
 
-/* 雪花特效 */
+#post .tag_share .post-meta__box__tags span.tagsPageCount, #tag-page-tags .tagsPageCount {
+background: rgba(255, 255, 255);
+}
+
+#post-top-cover {
+  display: none;   /* 完全隐藏且不占空间 */
+}
+
+#post-info {
+background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
+}
+
+.copyright-cc-box {
+background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
+}
+
+/* ---------------------------------------雪花特效--------------------------------- */
 
 [data-theme="light"] #snow {
   display: block;
@@ -394,7 +424,7 @@ div#archive {
 
 
 
-/* 新年侧边栏 */
+/* -----------------------------------------------新年侧边栏------------------------------------------------- */
 
 #newYear {
   color: white;
@@ -455,3 +485,4 @@ div#archive {
   width: 100%;
   background: radial-gradient(circle, #a8edea 0%, #fed6e3 100%);
 }
+
