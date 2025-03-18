@@ -149,7 +149,7 @@ div#archive {
 
 /* 深色模式适配 */
 [data-theme=dark] #web_bg {
-  background-image: url("https://www.helloimg.com/i/2025/03/14/67d3b72eb2383.png") !important;
+  background-image: url("https://pic1.imgdb.cn/item/67d83ea888c538a9b5c0020c.png") !important;
   /* 建议使用深色系图片 */
 }
 
@@ -405,6 +405,19 @@ background: url(https://haowallpaper.com/link/common/file/previewFileImg/1654072
 background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
 }
  */
+#page-header #site-title {
+    margin: 70px;
+    color: var(--white);
+    font-size: 1.85em;
+}
+.card-content {
+    position: relative; /* 确保内容可以定位 */
+    z-index: 1; /* 确保内容在背景图片之上 */
+}
+
+#topPostGroup .top-group-list-item{
+background:#ffffffb5
+}
 
 /* ---------------------------------------雪花特效--------------------------------- */
 
