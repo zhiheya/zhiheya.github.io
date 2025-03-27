@@ -310,25 +310,18 @@ div#archive {
 
 
 /* ======================== 优化后的样式 ======================== */
-#aside-content>.card-widget.card-info {
-  /* 基础布局和阴影 */
-  position: relative;
-  box-shadow: 0 0 5px rgb(66 68 68 / 100%);
-
-  /* 动态渐变背景 */
-  background: linear-gradient(-45deg,
-      #e8d8b9,
-      #eccec5,
-      #a3e9eb,
-      #bdbdf0,
-      #eec1ea) center / 400% 400% no-repeat fixed;
-  animation: Gradient 10s ease infinite !important;
-}
 
 /* 主题图片覆盖 */
+
 [data-theme="light"] #aside-content>.card-widget.card-info,
 [data-theme="dark"] #aside-content>.card-widget.card-info {
-  background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
+  background: url(https://s.panlai.com/upload/bizhihui_com_20231111170021169969322165138.jpg-armthumbs) center/cover;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 
@@ -372,55 +365,146 @@ div#archive {
 }
 
 #pagination.pagination-post {
-    background: rgb(0 0 0 / 23%);
+  background: rgb(0 0 0 / 23%);
 }
 
-.postImgHover img, #pagination .prev-post img, #pagination .next-post img, .relatedPosts > .relatedPosts-list > div img {
-opacity: 0.9;
+.postImgHover img,
+#pagination .prev-post img,
+#pagination .next-post img,
+.relatedPosts>.relatedPosts-list>div img {
+  opacity: 0.9;
 }
+
 .prev-cover entered loaded {
-width: 100%;
+  width: 100%;
   height: 100%;
-  object-fit: contain; /* 保持比例，完整显示图片 */
-}
-.relatedPosts > .relatedPosts-list .content {
-top: 65%;
+  object-fit: contain;
+  /* 保持比例，完整显示图片 */
 }
 
-#post .tag_share .post-meta__box__tags span.tagsPageCount, #tag-page-tags .tagsPageCount {
-background: rgba(255, 255, 255);
+.relatedPosts>.relatedPosts-list .content {
+  top: 65%;
+}
+
+#post .tag_share .post-meta__box__tags span.tagsPageCount,
+#tag-page-tags .tagsPageCount {
+  background: rgba(255, 255, 255);
 }
 
 #post-top-cover {
-  display: none;   /* 完全隐藏且不占空间 */
+  display: none;
+  /* 完全隐藏且不占空间 */
 }
 
-/*
-#post-info {
-background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
+
+
+@media screen and (min-width: 901px) {
+  #aside-content #card-toc {
+    right: 0px !important;
+    max-height: 600px;
+    /* 根据页面高度调整 */
+    overflow-y: auto;
+    /* 超出时显示滚动条 */
+    padding-right: 8px;
+    /* 避免滚动条遮挡内容 */
+  }
 }
 
-.copyright-cc-box {
-background: url(https://haowallpaper.com/link/common/file/previewFileImg/16540727113207168) center/cover;
+#aside-content #card-toc .toc-content {
+  max-height: 700px;
+  /* 根据页面高度调整 */
+  overflow-y: auto;
+  /* 超出时显示滚动条 */
+  padding-right: 8px;
+  /* 避免滚动条遮挡内容 */
+  width: calc(100% + 48px);
+  margin: 0px -24px;
 }
- */
-#page-header #site-title {
-    margin: 70px;
-    color: var(--white);
-    font-size: 1.85em;
+
+
+
+
+#*/page-header #site-title {
+  margin: 70px;
+  color: var(--white);
+  font-size: 1.85em;
 }
+
 .card-content {
-    position: relative; /* 确保内容可以定位 */
-    z-index: 1; /* 确保内容在背景图片之上 */
+  position: relative;
+  /* 确保内容可以定位 */
+  z-index: 1;
+  /* 确保内容在背景图片之上 */
 }
 
-#topPostGroup .top-group-list-item{
-background:#ffffffb5
+#topPostGroup .top-group-list-item {
+  background: #ffffffb5
+}
+
+#article-container .tabs>.nav-tabs>.tab {
+  background: #ffffff
+}
+
+
+a.categoryButton.blue {
+  background: linear-gradient(to right,
+      rgba(53, 139, 255, 0.8),
+      /* #358bff 半透明 */
+      rgba(21, 198, 255, 0.8)
+      /* #15c6ff 半透明 */
+    );
+  background-size: 200%;
+}
+
+a.categoryButton.red {
+  background: linear-gradient(to right,
+      rgba(255, 102, 85, 0.8),
+      /* #f65（简写为 #ff6655）半透明 */
+      rgba(255, 191, 55, 0.8)
+      /* #ffbf37 半透明 */
+    );
+  background-size: 200%;
+}
+
+a.categoryButton.green {
+  background: linear-gradient(to right,
+      rgba(24, 231, 174, 0.8),
+      /* #18e7ae 半透明 */
+      rgba(30, 235, 235, 0.8)
+      /* #1eebeb 半透明 */
+    );
+  background-size: 200%;
 }
 
 
 
-/* ---------------------------------------雪花特效--------------------------------- */
+
+
+#post .post-copyright {
+  background-image: linear-gradient(135deg,
+      #26c6da,
+      #7e57c2,
+      #26c6da,
+      #7e57c2);
+  background-size: 320% 320%;
+  /* 调整为2倍尺寸 */
+  animation: gradient-flow 5s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 140% 50%;
+    /* 终点设为140%而非回到原点 */
+  }
+}
+
+
+
+/* ---------------------------------------樱花特效--------------------------------- */
 
 [data-theme="light"] #snow {
   display: block;
@@ -463,7 +547,7 @@ background:#ffffffb5
   padding: 1rem;
   position: relative;
   border-radius: 12px;
-  background-image: url(https://tuchuang.voooe.cn/images/2023/01/02/tunian.webp);
+  background-image: url(https://pic1.imgdb.cn/item/67de275d88c538a9b5c32d66.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -499,6 +583,5 @@ background:#ffffffb5
   top: 0;
   height: 100%;
   width: 100%;
-  background: radial-gradient(circle, #a8edea 0%, #fed6e3 100%);
+  background: rgba(255, 255, 255, 0.3)
 }
-
