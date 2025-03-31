@@ -431,13 +431,6 @@ hr:before,
   -ms-animation: shake 0.8s;
   animation: shake 0.8s;
 }
-.avatar-img {
-  -webkit-animation: avatar_turn_around 2s linear infinite;
-  -moz-animation: avatar_turn_around 2s linear infinite;
-  -o-animation: avatar_turn_around 2s linear infinite;
-  -ms-animation: avatar_turn_around 2s linear infinite;
-  animation: avatar_turn_around 2s linear infinite;
-}
 .reward-main {
   -webkit-animation: donate_effcet 0.3s 0.1s ease both;
   -moz-animation: donate_effcet 0.3s 0.1s ease both;
@@ -21052,7 +21045,7 @@ svg.icon {
 }
 
 /* 解决artitalk的图标问题 */
-#uploadSource > svg {
+#uploadSource>svg {
   width: 1.19em;
   height: 1.5em;
 }
@@ -21066,31 +21059,33 @@ svg.icon {
 div#post {
   background: rgba(255, 255, 255, 0.9);
 }
-#recent-posts > .recent-post-item:not(:first-child):active {
+
+#recent-posts>.recent-post-item:not(:first-child):active {
   transform: scale(0.97);
 }
+
 /* 分页页面 */
 div#page {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* 归档页面 */
 div#archive {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* 标签页面 */
 div#tag {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* 分类页面 */
 div#category {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /*夜间模式伪类遮罩层透明*/
-[data-theme="dark"] #recent-posts > .recent-post-item {
+[data-theme="dark"] #recent-posts>.recent-post-item {
   background: #121212;
 }
 
@@ -21141,10 +21136,7 @@ div#category {
   font-size: 14px;
 }
 
-#article-container
-  a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.tag-Link):not(.btn-anzhiyu):not(
-    .no-text-decoration
-  ) {
+#article-container a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.tag-Link):not(.btn-anzhiyu):not(.no-text-decoration) {
   font-weight: 500;
   border-bottom: solid 2px var(--anzhiyu-lighttext);
   color: var(--anzhiyu-fontcolor);
@@ -21152,10 +21144,8 @@ div#category {
   text-decoration: none;
   font-family: inherit;
 }
-#article-container
-  a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.btn-anzhiyu):not(
-    .no-text-decoration
-  ):hover {
+
+#article-container a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.btn-anzhiyu):not(.no-text-decoration):hover {
   color: var(--anzhiyu-white);
   background: var(--anzhiyu-main);
   box-shadow: var(--anzhiyu-shadow-lightblack);
@@ -21163,7 +21153,7 @@ div#category {
   text-decoration: none;
 }
 
-html.hide-aside .layout > div:first-child {
+html.hide-aside .layout>div:first-child {
   width: 100%;
 }
 
@@ -21177,9 +21167,11 @@ html.hide-aside .layout > div:first-child {
 #recent-posts .recent-post-item:hover {
   border: var(--style-border-hover);
 }
+
 #recent-posts .recent-post-item:hover .recent-post-info .article-title {
   color: var(--anzhiyu-theme);
 }
+
 #recent-posts .recent-post-item {
   height: fit-content;
   background: var(--anzhiyu-card-bg);
@@ -21189,15 +21181,17 @@ html.hide-aside .layout > div:first-child {
   box-shadow: var(--anzhiyu-shadow-border);
   user-select: none;
 }
+
 /* 移动端容器padding */
 @media screen and (max-width: 768px) {
   #body-wrap .layout #page {
     padding: 20px 15px !important;
   }
 }
+
 /* 首页文章宽度 */
 @media screen and (max-width: 1200px) {
-  .layout > div:first-child {
+  .layout>div:first-child {
     width: 100% !important;
   }
 }
@@ -21207,7 +21201,7 @@ html.hide-aside .layout > div:first-child {
 }
 
 @media screen and (max-width: 768px) {
-  .layout > div:first-child:not(.recent-posts) {
+  .layout>div:first-child:not(.recent-posts) {
     border-radius: 12px 12px 0 0;
   }
 }
@@ -21215,12 +21209,13 @@ html.hide-aside .layout > div:first-child {
 .banners-title {
   animation: slide-in 0.6s 0.3s backwards;
 }
+
 #algolia-search .search-dialog {
   animation: slide-in 0.6s ease 0s 1 normal none running;
 }
 
 @media screen and (min-width: 1200px) {
-  #page > div:not(.author-content-item) {
+  #page>div:not(.author-content-item) {
     animation: slide-in 0.6s 0.2s backwards;
   }
 }
@@ -21236,11 +21231,11 @@ html.hide-aside .layout > div:first-child {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
-
 #aside-content .card-widget#card-wechat {
   background: #57bd6a;
   display: flex;

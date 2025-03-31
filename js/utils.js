@@ -845,8 +845,8 @@ const anzhiyu = {
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
-    const userId = "988690134";
-    const userServer = "netease";
+    const userId = "8896033476";
+    const userServer = "tencent";
     const anMusicPageMeting = document.getElementById("anMusic-page-meting");
     if (urlParams.get("id") && urlParams.get("server")) {
       const id = urlParams.get("id");
@@ -1046,15 +1046,15 @@ const anzhiyu = {
 
     function dr_js_autofill_commentinfos() {
       var lauthor = [
-          "#author",
-          "input[name='comname']",
-          "#inpName",
-          "input[name='author']",
-          "#ds-dialog-name",
-          "#name",
-          "input[name='nick']",
-          "#comment_author",
-        ],
+        "#author",
+        "input[name='comname']",
+        "#inpName",
+        "input[name='author']",
+        "#ds-dialog-name",
+        "#name",
+        "input[name='nick']",
+        "#comment_author",
+      ],
         lmail = [
           "#mail",
           "#email",
