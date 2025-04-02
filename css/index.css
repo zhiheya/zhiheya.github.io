@@ -12536,7 +12536,12 @@ h1.page-title + .tag-cloud-list {
     background: none;
   }
   div#travellings_button {
-    display: none !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: box !important;
+    display: flex !important;
   }
 }
 #nav #blog_name a:hover,
