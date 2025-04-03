@@ -1115,7 +1115,7 @@ const anzhiyu = {
       "取消"
     );
     travellingsTimer = setTimeout(function () {
-      window.open("http://localhost:4000/tz.html", "_blank");
+      window.open("https://zhiheya.github.io/games/game/go.html", "_blank");
     }, "5000");
   },
 
