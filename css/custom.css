@@ -10,7 +10,7 @@
   --border-style: 1px solid rgb(169, 169, 169);
 
   /* 背景滤镜：5px模糊 + 饱和度降为0%（毛玻璃效果） */
-  --backdrop-filter: blur(2px) saturate(50%);
+  /* --backdrop-filter: blur(1px) saturate(50%); */
 }
 
 /*---------------- 首页文章卡片样式 ---------------------- */
@@ -926,4 +926,14 @@ progress::-webkit-progress-value {
 /* 导航栏保持最上层 */
 #nav {
   z-index: 91;
+}
+
+
+.card-announcement {
+  height: auto;
+  text-align: center;
+}
+/* --------------------------------评论背景颜色----------------------------- */
+.vwrap{
+background-color: rgba(255, 255, 255, 0.5);
 }
