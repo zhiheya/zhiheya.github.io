@@ -42,13 +42,13 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> 后端 </category>
-          
           <category> 前端开发 </category>
           
           <category> 后端开发 </category>
+          
+          <category> 若依开发 </category>
+          
+          <category> 开发笔记 </category>
           
       </categories>
       
@@ -60,6 +60,8 @@
             <tag> 后端 </tag>
             
             <tag> 若依 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -77,13 +79,13 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> 后端 </category>
-          
           <category> 前端开发 </category>
           
           <category> 后端开发 </category>
+          
+          <category> 若依开发 </category>
+          
+          <category> 开发笔记 </category>
           
       </categories>
       
@@ -95,6 +97,8 @@
             <tag> 后端 </tag>
             
             <tag> 若依 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -112,13 +116,13 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> 后端 </category>
-          
           <category> 前端开发 </category>
           
           <category> 后端开发 </category>
+          
+          <category> 若依开发 </category>
+          
+          <category> 开发笔记 </category>
           
       </categories>
       
@@ -130,6 +134,8 @@
             <tag> 后端 </tag>
             
             <tag> 若依 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -147,13 +153,13 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> 后端 </category>
-          
           <category> 前端开发 </category>
           
           <category> 后端开发 </category>
+          
+          <category> 若依开发 </category>
+          
+          <category> 开发笔记 </category>
           
       </categories>
       
@@ -165,6 +171,8 @@
             <tag> 后端 </tag>
             
             <tag> 若依 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -182,7 +190,7 @@
       
       <categories>
           
-          <category> 工具 </category>
+          <category> 必备工具 </category>
           
           <category> 网站推荐 </category>
           

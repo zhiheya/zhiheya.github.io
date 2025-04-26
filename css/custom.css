@@ -239,7 +239,58 @@ div#archive {
   }
 }
 
+/* ===============头像呼吸灯===================== */
+[data-theme="light"] .avatar-img {
+  animation: huxi_light 4s ease-in-out infinite;
+}
 
+[data-theme="dark"] .avatar-img {
+  animation: huxi_dark 4s ease-in-out infinite;
+}
+
+@keyframes huxi_light {
+  0% {
+    box-shadow: 0px 0px 1px 1px #e9f5fa;
+  }
+
+  25% {
+    box-shadow: 0px 0px 5px 5px #ff9a9e;
+  }
+
+  50% {
+    box-shadow: 0px 0px 5px 5px #fad0c4;
+  }
+
+  75% {
+    box-shadow: 0px 0px 5px 5px #a18cd1;
+  }
+
+  100% {
+    box-shadow: 0px 0px 1px 1px #e9f5fa;
+  }
+}
+
+@keyframes huxi_dark {
+  0% {
+    box-shadow: 0px 0px 1px 1px #39c5bb;
+  }
+
+  25% {
+    box-shadow: 0px 0px 5px 5px #a6c1ee;
+  }
+
+  50% {
+    box-shadow: 0px 0px 5px 5px #fbc2eb;
+  }
+
+  75% {
+    box-shadow: 0px 0px 5px 5px #84fab0;
+  }
+
+  100% {
+    box-shadow: 0px 0px 1px 1px #39c5bb;
+  }
+}
 
 
 
@@ -831,9 +882,105 @@ progress::-webkit-progress-value {
   background-clip: text;
   color: transparent;
 }
+ .categoryBar-list-list-descr {
+    color: white;
+  }
+
+
+categoryBar-list-list-descr{
+color:#ffffff
+}
+/* --------------------------------分类调整----------------------------- */
+#categoryBar {
+    flex-direction: column;
+}
+#tag-page-tags.category-lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  #tag-page-tags.category-lists > a {
+    position: relative;
+    display: inline-flex;
+    margin: 15px;
+    padding: 12px 30px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.5s;
+    z-index: 1;
+  }
+
+  /* 细光条 + 渐变色 */
+  #tag-page-tags.category-lists > a::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 400%;
+    background: linear-gradient(45deg, #00f5d4, #f15bb5, #9b5de5, #fee440);
+    top: -150%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: spin 4s linear infinite;
+    z-index: -2;
+    opacity: 0.8;
+  }
+
+  /* 内层遮罩 */
+  #tag-page-tags.category-lists > a::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: linear-gradient(45deg, #e0e0e0, #f5f5f5, #ffffff);
+    background-size: 200% 200%; /* 让渐变可动 */
+    animation: gradientShift 6s ease infinite; /* 渐变动画 */
+    border-radius: 6px;
+    z-index: -1;
+    transition: background 0.3s;
+  }
+
+  /* 悬停效果 */
+  #tag-page-tags.category-lists > a:hover {
+    transform: translateY(-5px);
+    color: white;
+    box-shadow: 0 0 15px #00ccff;
+  }
+
+  #tag-page-tags.category-lists > a:hover::after {
+    background: #00ccff;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
 
+li.categoryBar-list-item {
+    /* 添加过渡效果使变化更平滑 */
+    transition: all 0.3s ease-in-out;
+    /* 确保初始状态有明确的背景设置 */
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+li.categoryBar-list-item:hover {
+    /* 保持你原来的特定性 (0,2,1) */
+    background-size: 110% !important;
+    box-shadow: inset 500px 50px 50px 50px rgba(50, 50, 50, 0.6);
+    /* 添加额外的hover效果 */
+    transform: scale(1.02);
+    cursor: pointer;
+    /* 如果需要可以添加文字效果 */
+    color: white !important;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
 /* --------------------------------首页视频背景样式----------------------------- */
 .full-page-video {
   position: absolute;
@@ -933,7 +1080,8 @@ progress::-webkit-progress-value {
   height: auto;
   text-align: center;
 }
+
 /* --------------------------------评论背景颜色----------------------------- */
-.vwrap{
-background-color: rgba(255, 255, 255, 0.5);
+.vwrap {
+  background-color: rgba(255, 255, 255, 0.5);
 }
