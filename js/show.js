@@ -4,103 +4,162 @@ if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobi
     document.write('<canvas id="snow" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none"></canvas>');
 
     window && (() => {
-        let e = {
-            flakeCount: 35,    // 花瓣数量保持不变
-            minDist: 20,      // 互动影响距离不变
-            color: "255, 183, 197", // 改为樱花粉色
-            size: 2.5,         // 增大基础尺寸
-            speed: .5,         // 下落速度保持不变
-            opacity: .8,       // 提高透明度
-            stepsize: .4       // 飘动幅度保持不变
+        let config = {
+            flakeCount: 50,    // 增加花瓣数量
+            minDist: 50,      // 增加互动影响距离
+            color: "255, 183, 197", // 樱花粉色
+            minSize: 2,       // 最小尺寸
+            maxSize: 6,       // 最大尺寸
+            baseSpeed: 0.3,   // 基础下落速度
+            windSpeed: 0.05,  // 风速系数
+            windChangeInterval: 3000, // 风向变化间隔(ms)
+            opacity: 0.8,     // 基础透明度
+            rotationSpeed: 0.5 // 旋转速度
         };
-        const t = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (e) {
-            window.setTimeout(e, 1e3 / 60)
-        };
-        window.requestAnimationFrame = t;
-        const i = document.getElementById("snow"),
-            n = i.getContext("2d"),
-            o = e.flakeCount;
-        let a = -100,
-            d = -100,
-            s = [];
-        i.width = window.innerWidth,
-            i.height = window.innerHeight;
-        const h = () => {
-            n.clearRect(0, 0, i.width, i.height);
-            const r = e.minDist;
-            for (let t = 0; t < o; t++) {
-                let o = s[t];
-                const h = a,
-                    w = d,
-                    m = o.x,
-                    c = o.y,
-                    p = Math.sqrt((h - m) * (h - m) + (w - c) * (w - c));
-                if (p < r) {
-                    const e = (h - m) / p,
-                        t = (w - c) / p,
-                        i = r / (p * p) / 2;
-                    o.velX -= i * e,
-                        o.velY -= i * t
-                } else
-                    o.velX *= .98,
-                        o.velY < o.speed && o.speed - o.velY > .01 && (o.velY += .01 * (o.speed - o.velY)),
-                        o.velX += Math.cos(o.step += .05) * o.stepSize;
-                n.fillStyle = "rgba(" + e.color + ", " + o.opacity + ")",
-                    o.y += o.velY,
-                    o.x += o.velX,
-                    (o.y >= i.height || o.y <= 0) && l(o),
-                    (o.x >= i.width || o.x <= 0) && l(o),
-                    n.beginPath();
-                // 添加简单花瓣形状（椭圆）
-                n.ellipse(o.x, o.y, o.size, o.size*0.8, o.angle * Math.PI/180, 0, 2 * Math.PI);
-                n.fill()
+
+        const requestAnimFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+            function (callback) { window.setTimeout(callback, 1000 / 60) };
+
+        const canvas = document.getElementById("snow"),
+            ctx = canvas.getContext("2d");
+
+        let mouseX = -100,
+            mouseY = -100,
+            windForce = 0,
+            lastWindChange = 0,
+            petals = [];
+
+        // 初始化画布大小
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // 花瓣类
+        class Petal {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height; // 初始随机高度
             }
-            t(h)
-        }
-            , l = e => {
-                e.x = Math.floor(Math.random() * i.width),
-                    e.y = 0,
-                    e.size = 3 * Math.random() + 3,  // 增大尺寸随机范围
-                    e.speed = 1 * Math.random() + .5,
-                    e.velY = e.speed,
-                    e.velX = 0,
-                    e.opacity = .6 * Math.random() + .4,  // 调整透明度范围
-                    e.angle = Math.random() * 360  // 添加随机旋转角度
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
+                this.speed = config.baseSpeed * (0.5 + Math.random() * 1.5); // 随机速度
+                this.velY = this.speed;
+                this.velX = windForce * this.speed * 2;
+                this.opacity = config.opacity * (0.5 + Math.random() * 0.5);
+                this.angle = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * config.rotationSpeed;
+                this.windResistance = 0.3 + Math.random() * 0.7; // 花瓣对风的阻力
+                this.swingPhase = Math.random() * Math.PI * 2; // 摆动相位
+                this.swingAmplitude = 0.5 + Math.random(); // 摆动幅度
+                this.swingFrequency = 0.001 + Math.random() * 0.003; // 摆动频率
             }
-            ;
-        document.addEventListener("mousemove", (e => {
-            a = e.clientX,
-                d = e.clientY
-        }
-        )),
-            window.addEventListener("resize", (() => {
-                i.width = window.innerWidth,
-                    i.height = window.innerHeight
-            }
-            )),
-            (() => {
-                for (let t = 0; t < o; t++) {
-                    const t = Math.floor(Math.random() * i.width)
-                        , n = Math.floor(Math.random() * i.height)
-                        , o = 3 * Math.random() + e.size
-                        , a = 1 * Math.random() + e.speed
-                        , d = .6 * Math.random() + e.opacity;
-                    s.push({
-                        speed: a,
-                        velX: 0,
-                        velY: a,
-                        x: t,
-                        y: n,
-                        size: o,
-                        stepSize: Math.random() / 30 * e.stepsize,
-                        step: 0,
-                        angle: Math.random() * 360,  // 初始随机角度
-                        opacity: d
-                    })
+
+            update() {
+                // 更新位置
+                this.velY = this.speed;
+                this.velX = windForce * this.speed * 2 * this.windResistance;
+
+                // 添加摆动效果
+                this.swingPhase += this.swingFrequency;
+                this.velX += Math.sin(this.swingPhase) * this.swingAmplitude;
+
+                this.x += this.velX;
+                this.y += this.velY;
+                this.angle += this.rotationSpeed;
+
+                // 检查边界
+                if (this.y > canvas.height + 10) {
+                    this.reset();
                 }
-                h()
+
+                if (this.x < -10 || this.x > canvas.width + 10) {
+                    this.reset();
+                }
+
+                // 鼠标互动
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < config.minDist) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (config.minDist - dist) / config.minDist;
+                    this.velX -= Math.cos(angle) * force * 2;
+                    this.velY -= Math.sin(angle) * force * 2;
+                }
             }
-            )()
-    }
-    )();
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle * Math.PI / 180);
+
+                // 绘制花瓣形状（更复杂的形状）
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(
+                    this.size * 0.8, this.size * -0.5,
+                    this.size * 0.8, this.size * -1.5,
+                    0, this.size * -1.8
+                );
+                ctx.bezierCurveTo(
+                    this.size * -0.8, this.size * -1.5,
+                    this.size * -0.8, this.size * -0.5,
+                    0, 0
+                );
+
+                ctx.fillStyle = `rgba(${config.color}, ${this.opacity})`;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // 初始化花瓣
+        function initPetals() {
+            for (let i = 0; i < config.flakeCount; i++) {
+                petals.push(new Petal());
+            }
+        }
+
+        // 更新风向
+        function updateWind(timestamp) {
+            if (timestamp - lastWindChange > config.windChangeInterval) {
+                // 随机改变风向，但保持一定的连续性
+                windForce = Math.max(-1, Math.min(1, windForce + (Math.random() - 0.5) * 0.5));
+                lastWindChange = timestamp;
+            }
+        }
+
+        // 动画循环
+        function animate(timestamp) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            updateWind(timestamp);
+
+            for (let petal of petals) {
+                petal.update();
+                petal.draw();
+            }
+
+            requestAnimFrame(animate);
+        }
+
+        // 事件监听
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // 启动动画
+        initPetals();
+        animate(0);
+    })();
 }
