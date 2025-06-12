@@ -1092,6 +1092,20 @@ li.categoryBar-list-item:hover {
   text-align: center;
 }
 
+/* 移动端显示移动视频，并向右偏移 */
+@media screen and (max-width: 767px) {
+  .mobile-video {
+    display: block !important;
+    /* 向右偏移 10% (默认是 50% 居中) */
+    object-position: 73% center;
+  }
+
+  .pc-video {
+    display: none !important;
+  }
+}
+
+
 /* --------------------------------评论背景颜色----------------------------- */
 .vwrap {
   background-color: rgba(255, 255, 255, 0.5);
